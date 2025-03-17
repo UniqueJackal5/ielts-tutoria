@@ -76,6 +76,53 @@ export default function StudentDashboard() {
 
             <Card>
                 <CardHeader>
+                    <CardTitle>Assignment Deadlines</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Course</TableHead>
+                                <TableHead>Assignment</TableHead>
+                                <TableHead>Due Date</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>Writing</TableCell>
+                                <TableCell>Essay Task 2</TableCell>
+                                <TableCell>2024-03-25</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Payment History</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Date</TableHead>
+                                <TableHead>Amount</TableHead>
+                                <TableHead>Status</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>2024-03-15</TableCell>
+                                <TableCell>₹5000</TableCell>
+                                <TableCell>Completed</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
                     <CardTitle>Quick Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="flex gap-4">

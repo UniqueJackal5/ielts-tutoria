@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card';
+import { Progress } from '../ui/progress';
 import { Button } from '../ui/button';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '../ui/table';
 
@@ -63,6 +64,54 @@ export default function TeacherDashboard() {
                         <Button variant="outline">View Schedule</Button>
                     </CardContent>
                 </Card>
+
+                <div className="grid grid-cols-2 gap-6">
+                    <Card className="col-span-2">
+                        <CardHeader>
+                            <CardTitle>Schedule Calendar</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="h-[300px] bg-muted rounded-lg p-4">
+                                {/* Calendar component placeholder */}
+                                <p className="text-muted-foreground">Calendar integration coming soon</p>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Session Analytics</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="h-[200px] bg-muted rounded-lg p-4">
+                                <p className="text-muted-foreground">Completed Sessions: 24</p>
+                                <p className="text-muted-foreground">Pending Sessions: 5</p>
+                                <p className="text-muted-foreground mt-4">Average Rating: 4.8/5</p>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Earnings Overview</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="space-y-2">
+                                <p className="font-medium">Total Earnings: ₹45,000</p>
+                                <Progress value={75} className="h-2" />
+                                <p className="text-sm text-muted-foreground">Monthly target: ₹60,000</p>
+                                <Table>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell>Pending Payments</TableCell>
+                                            <TableCell className="text-right">₹12,500</TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
         </div>
     );

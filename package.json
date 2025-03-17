@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "seed:test-accounts": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node -r dotenv/config src/scripts/seedTestAccounts.ts",
     "start": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node server.ts",
     "dev": "vite",
     "build": "tsc && vite build",
