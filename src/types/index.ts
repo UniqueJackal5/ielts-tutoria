@@ -3,6 +3,7 @@ import { Request } from 'express';
 // Basic type definitions
 export interface IUser {
   _id?: any; // MongoDB ObjectId
+  courses: any[];
   id?: string;
   email: string;
   password: string;

@@ -1,12 +1,68 @@
+import { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
+import { Student } from '../../types/dashboard';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '../ui/table';
 
 export default function StudentDashboard() {
+    const [enrollment, setEnrollment] = useState<Student | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchEnrollment = async () => {
+            try {
+                const response = await fetch('/api/enrollment/status');
+                const data = await response.json() as Student;
+                setEnrollment(data);
+            } catch (error) {
+                console.error('Error fetching enrollment status:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchEnrollment();
+    }, []);
+
     return (
         <div className="p-8 space-y-6">
             <h1 className="text-3xl font-bold">Student Dashboard</h1>
+
+            {!loading && (
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Enrollment Status</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        {enrollment?.isEnrolled ? (
+                            <div className="space-y-4">
+                                <p className="text-green-600">Enrolled in {enrollment?.courses?.length} courses</p>
+                                <Table>
+                                    <TableHeader>
+                                        <TableRow>
+                                            <TableHead>Course</TableHead>
+                                            <TableHead>Instructor</TableHead>
+                                        </TableRow>
+                                    </TableHeader>
+                                    <TableBody>
+                                        {enrollment?.courses?.map(course => (
+                                            <TableRow key={course._id}>
+                                                <TableCell>{course.title}</TableCell>
+                                                <TableCell>{course.instructor?.firstName} {course.instructor?.lastName}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </div>
+                        ) : (
+                            <div className="text-center space-y-4">
+                                <p className="text-red-600">Not enrolled in any courses</p>
+                                <Button>Browse Available Courses</Button>
+                            </div>
+                        )}
+                    </CardContent>
+                </Card>
+            )}
 
             <Card>
                 <CardHeader>

@@ -130,23 +130,7 @@ const SidebarProvider = React.forwardRef<
     return (
       <SidebarContext.Provider value={contextValue}>
         <TooltipProvider delayDuration={0}>
-          <div
-            style={
-              {
-                "--sidebar-width": SIDEBAR_WIDTH,
-                "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
-                ...style,
-              } as React.CSSProperties
-            }
-            className={cn(
-              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar",
-              className
-            )}
-            ref={ref}
-            {...props}
-          >
-            {children}
-          </div>
+          {children}
         </TooltipProvider>
       </SidebarContext.Provider>
     )
@@ -758,4 +742,27 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
+  export interface SidebarItemProps {
+    name: string;
+    href: string;
+    icon: React.ComponentType<{ className?: string }>;
+    active?: boolean;
+  }
+  
+  export const SidebarItem = React.forwardRef<HTMLAnchorElement, SidebarItemProps>(
+    ({ name, href, icon: Icon, active = false }, ref) => (
+      <a
+        ref={ref}
+        href={href}
+        className={cn(
+          'flex items-center gap-3 px-3 py-2 text-sm font-medium transition-colors',
+          active ? 'bg-accent text-accent-foreground' : 'hover:bg-muted'
+        )}
+      >
+        <Icon className="h-4 w-4" />
+        <span>{name}</span>
+      </a>
+    )
+  );
+  SidebarItem.displayName = 'SidebarItem';
 }

@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface FileUploadProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onSuccess: () => void;
   onFilesSelected: (files: File[]) => void;
   maxFiles?: number;
   maxSizeMB?: number;

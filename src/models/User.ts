@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, index: true },
   password: { type: String, required: true },
   firstName: { type: String, required: true },
+  courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
   lastName: { type: String, required: false },
   role: { type: String, required: true, enum: ['student', 'teacher', 'admin'], default: 'student' },
   isVerified: { type: Boolean, default: false },
