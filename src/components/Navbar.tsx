@@ -106,6 +106,7 @@ const NavLinks = ({ mobile = false }: { mobile?: boolean }) => {
     { name: 'For Students', path: '/for-students' },
     { name: 'For Teachers', path: '/for-teachers' },
     { name: 'Resources', path: '/resources' },
+    { name: 'Chat', path: '/chat' },
   ];
 
   return (

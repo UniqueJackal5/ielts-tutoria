@@ -5,10 +5,13 @@ import fileRoutes from "./src/routes/fileRoutes";
 import bookingRoutes from "./src/routes/bookingRoutes";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import http from "http";
+import { initializeSocket } from "./src/services/socketService";
 
 dotenv.config();
 
 const app = express();
+const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // Middleware
@@ -35,7 +38,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/files", fileRoutes);
 app.use("/api/bookings", bookingRoutes);
 
+// Initialize socket.io
+initializeSocket(server);
+
 // Start server
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
