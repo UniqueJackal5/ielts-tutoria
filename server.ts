@@ -3,6 +3,7 @@ import cors from "cors";
 import authRoutes from "./src/routes/authRoutes";
 import fileRoutes from "./src/routes/fileRoutes";
 import bookingRoutes from "./src/routes/bookingRoutes";
+import adminRoutes from "./src/routes/adminRoutes";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import http from "http";
@@ -37,6 +38,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/files", fileRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Initialize socket.io
 initializeSocket(server);

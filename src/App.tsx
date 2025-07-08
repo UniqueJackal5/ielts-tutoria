@@ -14,6 +14,7 @@ import RequestPasswordReset from "./pages/RequestPasswordReset"; // Updated to r
 import ResetPassword from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard"; // Updated to remove extension
 import Chat from "./pages/Chat";
+import AdminDashboard from "./pages/AdminDashboard";
 
 
 
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
